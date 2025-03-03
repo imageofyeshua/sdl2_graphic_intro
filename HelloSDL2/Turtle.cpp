@@ -41,6 +41,23 @@ void Turtle::RotateRight(float angle) { m_angle += angle * (M_PI / 180.0); }
 
 void Turtle::RotateLeft(float angle) { m_angle -= angle * (M_PI / 180.0); }
 
+void Turtle::LookAt(float xPos, float yPos) {
+    float dx = xPos - m_x;
+    float dy = yPos - m_y;
+
+    if (dx == 0.0) {
+        if (dy > 0.0)
+            m_angle = M_PI / 2.0;
+        else
+            m_angle = M_PI + (M_PI / 2.0);
+    } else {
+        m_angle = atan(dy / dx);
+    }
+
+    if (dx < 0.0)
+        m_angle += M_PI;
+}
+
 void Turtle::Step() {
     // Compute where the turtle will end up.
     float startX = m_x;
@@ -62,3 +79,7 @@ void Turtle::Step() {
                            static_cast<int>(round(endY)));
     }
 }
+
+float Turtle::GetX() { return m_x; }
+
+float Turtle::GetY() { return m_y; }

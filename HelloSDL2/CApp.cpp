@@ -8,17 +8,6 @@ CApp::CApp() {
     isRunning = true;
     pWindow = NULL;
     pRenderer = NULL;
-
-    // Configure the standard colors we want to use
-    m_redList.push_back(51);
-    m_greenList.push_back(128);
-    m_blueList.push_back(204);
-    m_redList.push_back(255);
-    m_greenList.push_back(128);
-    m_blueList.push_back(0);
-    m_redList.push_back(255);
-    m_greenList.push_back(191);
-    m_blueList.push_back(0);
 }
 
 bool CApp::OnInit() {
@@ -49,6 +38,19 @@ bool CApp::OnInit() {
     m_turtle.PenDown();
     m_turtle.SetLength(75);
 
+    // Test the turtle 'LookAt' function
+    std::array<float, 8> xTarget{0, 320, 640, 640, 640, 320, 0, 0};
+    std::array<float, 8> yTarget{0, 0, 0, 240, 480, 480, 480, 240};
+
+    for (int i = 0; i < xTarget.size(); ++i) {
+        m_turtle.MoveTo(320, 240);
+        m_turtle.SetPenColor(m_redList[i % 3], m_greenList[i % 3],
+                             m_blueList[i % 3], 255);
+        m_turtle.LookAt(xTarget[i], yTarget[i]);
+        m_turtle.Step();
+    }
+
+    /*
     for (int i = 0; i < 18; i++) {
         m_turtle.SetPenColor(m_redList[i % 3], m_greenList[i % 3],
                              m_blueList[i % 3], 255);
@@ -58,6 +60,7 @@ bool CApp::OnInit() {
         }
         m_turtle.RotateLeft(20);
     }
+    */
 
     return true;
 }

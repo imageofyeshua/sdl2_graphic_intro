@@ -19,9 +19,14 @@ class Turtle {
         void SetLength(float length);
         void RotateRight(float angle);
         void RotateLeft(float angle);
+        void LookAt(float xPos, float yPos);
 
         // Method to allow the user to specify the starting position
         void MoveTo(float xPos, float yPos);
+
+        // Methods to allow the user to retrieve the current position
+        float GetX();
+        float GetY();
 
         // Method to actually make the turtle move
         void Step();
