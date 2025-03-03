@@ -37,9 +37,9 @@ void Turtle::MoveTo(float xPos, float yPos) {
     m_y = yPos;
 }
 
-void Turtle::RotateRight(float angle) { m_angle -= angle * (M_PI / 180.0); }
+void Turtle::RotateRight(float angle) { m_angle += angle * (M_PI / 180.0); }
 
-void Turtle::RotateLeft(float angle) { m_angle += angle * (M_PI / 180.0); }
+void Turtle::RotateLeft(float angle) { m_angle -= angle * (M_PI / 180.0); }
 
 void Turtle::Step() {
     // Compute where the turtle will end up.

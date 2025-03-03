@@ -1,5 +1,7 @@
+#include "Turtle.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_log.h>
+#include <vector>
 
 class CApp {
     public:
@@ -16,4 +18,9 @@ class CApp {
         bool isRunning;
         SDL_Window *pWindow;
         SDL_Renderer *pRenderer;
+
+        Turtle m_turtle;
+        std::vector<int> m_redList;
+        std::vector<int> m_greenList;
+        std::vector<int> m_blueList;
 };
